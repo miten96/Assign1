@@ -127,7 +127,22 @@
         android:text="Show Log Entries"
         android:visibility="visible" />
 
+
     <LinearLayout
+        android:layout_above="@+id/buttomcontain"
+        android:layout_below="@+id/btnShowEntry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/buttomcontain"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
