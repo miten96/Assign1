@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginTop="5dp">
+
+    <Button
+        android:id="@+id/btnAngus"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Angus"
+        android:tag="1"
+        android:onClick="cowbuttonClick"/>
+
+    <Button
+        android:id="@+id/btnHereford"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="hereford"
+        android:layout_below="@id/btnAngus"
+        android:tag="2"
+        android:onClick="cowbuttonClick"
+        />
+
+    <Button
+        android:id="@+id/btnBrahman"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Brahman"
+        android:layout_below="@id/btnHereford"
+        android:tag="3"
+        android:onClick="cowbuttonClick"
+        />
+
+    <Button
+        android:id="@+id/btnShorthorn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Shorthorn"
+        android:layout_below="@id/btnBrahman"
+        android:tag="4"
+        android:onClick="cowbuttonClick"
+        />
+
+    <Button
+        android:id="@+id/btnBrangus"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Brangus"
+        android:layout_below="@id/btnShorthorn"
+        android:tag="5"
+        android:onClick="cowbuttonClick"
+        />
+
+
+</RelativeLayout>
