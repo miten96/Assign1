@@ -62,11 +62,11 @@ public class DatabaseQueryClass {
             cursor = sqLiteDatabase.query(Config.TABLE_RECORD, null, null, null, null, null, null, null);
 
 
-            String SELECT_QUERY = String.format("SELECT %s, %s, %s, %s, %s,%s FROM %s WHERE flag= %s ",
-                    Config.COLUMN_ID_PRIMARY, Config.COLUMN_WEIGHT,
+            String SELECT_QUERY = String.format("SELECT %s, %s, %s, %s, %s,%s FROM %s WHERE flag= ?",
+                    Config.COLUMN_ID_PRIMARY,Config.COLUMN_ID, Config.COLUMN_WEIGHT,
                     Config.COLUMN_AGE, Config.COLUMN_FLAG, Config.COLUMN_DATE,
-                    Config.TABLE_RECORD, flag);
-            cursor = sqLiteDatabase.rawQuery(SELECT_QUERY, null);
+                    Config.TABLE_RECORD);
+            cursor = sqLiteDatabase.rawQuery(SELECT_QUERY, new String[] {flag});
 
 
             if (cursor != null)

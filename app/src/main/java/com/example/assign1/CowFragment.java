@@ -3,6 +3,7 @@ package com.example.assign1;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ import com.example.assign1.Model.Record;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -29,10 +31,11 @@ public class CowFragment extends Fragment {
 
     Button btnSaveEntry, btnShowEntry;
     ListView listView;
-    ArrayList<Record> dataModels;
+    List<Record> dataModels = new ArrayList<>();;
+
 
     private static RecordAdapter adapter;
-    DatabaseQueryClass databaseQueryClass = new DatabaseQueryClass(getContext());
+    DatabaseQueryClass databaseQueryClass = new DatabaseQueryClass(getActivity());
 
     EditText id, weight, age;
     String sid, sweight, sage;
@@ -66,10 +69,15 @@ public class CowFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                dataModels.addAll(databaseQueryClass.getAllStudent(String.valueOf(Constan.actualposition)));
+                try {
+
+                    dataModels.addAll(databaseQueryClass.getAllStudent(String.valueOf(Constan.actualposition)));
+                }catch (Exception e){
+                    Log.e("EROROWSS",e.getMessage());
+                }
 
 
-                if (!dataModels.isEmpty()){
+                if (!dataModels.isEmpty()) {
                     adapter = new RecordAdapter(dataModels, getActivity());
                     listView.setAdapter(adapter);
                 }
@@ -87,7 +95,7 @@ public class CowFragment extends Fragment {
                 String currentDateandTime = sdf.format(new Date());
 
                 Record record = new Record(-1, sid, sweight, sage, String.valueOf(Constan.actualposition), currentDateandTime);
-                DatabaseQueryClass databaseQueryClass = new DatabaseQueryClass(getContext());
+                DatabaseQueryClass databaseQueryClass = new DatabaseQueryClass(getActivity());
 
 
                 long id = databaseQueryClass.insertRecord(record);

@@ -11,12 +11,12 @@ import com.example.assign1.Model.Record;
 
 
 import java.util.ArrayList;
-
+import java.util.List;
 
 
 public class RecordAdapter extends ArrayAdapter<Record> {
 
-    private ArrayList<Record> dataSet;
+    private List<Record> dataSet;
     Context mContext;
 
     // View lookup cache
@@ -27,7 +27,7 @@ public class RecordAdapter extends ArrayAdapter<Record> {
         TextView tvdate;
     }
 
-    public RecordAdapter(ArrayList<Record> data, Context context) {
+    public RecordAdapter(List<Record> data, Context context) {
         super(context, R.layout.mylist, data);
         this.dataSet = data;
         this.mContext = context;
@@ -48,7 +48,7 @@ public class RecordAdapter extends ArrayAdapter<Record> {
             viewHolder.tvid = (TextView) convertView.findViewById(R.id.tvid);
             viewHolder.tvweight = (TextView) convertView.findViewById(R.id.tvweight);
             viewHolder.tvage = (TextView) convertView.findViewById(R.id.tvage);
-            viewHolder.tvage = (TextView) convertView.findViewById(R.id.tvdate);
+            viewHolder.tvdate = (TextView) convertView.findViewById(R.id.tvdate);
 
             result = convertView;
 
