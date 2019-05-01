@@ -13,7 +13,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.assign1.Adapter.RecordAdapter;
 import com.example.assign1.DataBase.DatabaseQueryClass;
 import com.example.assign1.Model.Record;
 
@@ -28,12 +27,12 @@ import java.util.Date;
 public class CowFragment extends Fragment {
 
 
-    Button btnSaveEntry;
+    Button btnSaveEntry, btnShowEntry;
     ListView listView;
     ArrayList<Record> dataModels;
 
     private static RecordAdapter adapter;
-
+    DatabaseQueryClass databaseQueryClass = new DatabaseQueryClass(getContext());
 
     EditText id, weight, age;
     String sid, sweight, sage;
@@ -61,6 +60,21 @@ public class CowFragment extends Fragment {
         listView = view.findViewById(R.id.listView);
 
         btnSaveEntry = view.findViewById(R.id.btnSaveEntry);
+        btnShowEntry = view.findViewById(R.id.btnShowEntry);
+
+        btnShowEntry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                dataModels.addAll(databaseQueryClass.getAllStudent(String.valueOf(Constan.actualposition)));
+
+
+                if (!dataModels.isEmpty()){
+                    adapter = new RecordAdapter(dataModels, getActivity());
+                    listView.setAdapter(adapter);
+                }
+            }
+        });
         btnSaveEntry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -85,19 +99,13 @@ public class CowFragment extends Fragment {
         });
 
 
-
-
-        adapter= new RecordAdapter(dataModels,getActivity());
-        listView.setAdapter(adapter);
-
-
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Record dataModel= dataModels.get(position);
+                Record dataModel = dataModels.get(position);
 
-                Toast.makeText(getActivity(), dataModel.getId()+"", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), dataModel.getId() + "", Toast.LENGTH_SHORT).show();
                 /*Snackbar.make(view, dataModel.getName()+"\n"+dataModel.getType()+" API: "+dataModel.getVersion_number(), Snackbar.LENGTH_LONG)
                         .setAction("No action", null).show();*/
             }

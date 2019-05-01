@@ -87,7 +87,7 @@ public class DatabaseQueryClass {
                 }
         } catch (Exception e) {
             Logger.d("Exception: " + e.getMessage());
-            Toast.makeText(context, "Operation failed", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, "Operation failed", Toast.LENGTH_SHORT).show();
         } finally {
             if (cursor != null)
                 cursor.close();
